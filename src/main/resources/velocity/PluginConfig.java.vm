@@ -1,0 +1,27 @@
+package ${data.pluginClassData().packageName()}.config;
+
+import $data.pluginClassData().fullyQualifiedName();
+import be.lennertsoffers.spigotbootstrapper.library.exception.PluginRegistrationException;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan(basePackages = {"$data.pluginClassData().packageName()"})
+public class PluginConfig {
+
+    @Bean
+    public $data.pluginClassData().simpleName() plugin() {
+        Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin("$data.pluginName()");
+
+        if (!(plugin instanceof $data.pluginClassData().simpleName() p)) throw new PluginRegistrationException(
+                "The plugin with name '$data.pluginName()' doesn't have the same type as your SpigotPlugin annotated file"
+        );
+
+        return p;
+    }
+
+}
+#* @vtlvariable name="data" type="be.lennertsoffers.spigotbootstrapper.annotationprocessor.generation.templatedata.PluginConfigData" *#

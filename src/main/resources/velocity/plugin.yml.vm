@@ -1,0 +1,75 @@
+#set ($plugin = $data.plugin())
+#set ($commands = $data.commands())
+main: "$plugin.main()"
+name: "$plugin.name()"
+version: "$plugin.version()"
+#if(!$plugin.description().isEmpty())
+description: "$plugin.description()"
+#end
+#if(!$plugin.apiVersion().isEmpty())
+api-version: "$plugin.apiVersion()"
+#end
+load: "$plugin.load()"
+#if(!$plugin.author().isEmpty())
+author: "$plugin.author()"
+#end
+#if(!$plugin.authors().isEmpty())
+authors:
+    #foreach($author in $plugin.authors())
+    - "$author"
+    #end
+#end
+#if(!$plugin.website().isEmpty())
+website: "$plugin.website()"
+#end
+#if(!$plugin.prefix().isEmpty())
+prefix: "$plugin.prefix()"
+#end
+#if(!$plugin.depend().isEmpty())
+depend:
+    #foreach($depend in $plugin.depend())
+    - "$depend"
+    #end
+#end
+#if(!$plugin.softDepend().isEmpty())
+softdepend:
+    #foreach($softDepend in $plugin.softDepend())
+    - "$softDepend"
+    #end
+#end
+#if(!$plugin.loadBefore().isEmpty())
+softdepend:
+    #foreach($loadBefore in $plugin.loadBefore())
+    - "$loadBefore"
+    #end
+#end
+#if(!$plugin.libraries().isEmpty())
+libraries:
+    #foreach($library in $plugin.libraries())
+    - "$library"
+    #end
+#end
+
+#if(!$commands.isEmpty())
+commands:
+    #foreach($command in $commands)
+    $command.name():
+        description: "$command.description()"
+        #if(!$command.usage().isEmpty())
+        usage: "$command.usage()"
+        #end
+        #if(!$command.aliases().isEmpty())
+        aliases:
+            #foreach($alias in $command.aliases())
+            - "$alias"
+            #end
+        #end
+        #if(!$command.permission().isEmpty())
+        permission: "$command.permission()"
+        #end
+        #if(!$command.permissionMessage().isEmpty())
+        permission-message: "$command.permissionMessage()"
+        #end
+    #end
+#end
+#* @vtlvariable name="data" type="be.lennertsoffers.spigotbootstrapper.annotationprocessor.generation.templatedata.PluginYmlData" *#
