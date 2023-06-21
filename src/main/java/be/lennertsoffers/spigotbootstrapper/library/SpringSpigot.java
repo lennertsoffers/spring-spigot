@@ -8,7 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 /**
  * Entry point to enable the plugin context
  */
-public class SpigotBootstrapper {
+public class SpringSpigot {
 
     private static final ContextInitializer contextInitializer = new ContextInitializer();
 

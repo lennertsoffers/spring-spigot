@@ -1,4 +1,6 @@
 .gradle
+gradle.properties
+keys
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
